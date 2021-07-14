@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MarleySpoonAssignment</string>
+
+    <string name="no_internet_connection_message">No Internet Connection</string>
+    <string name="server_error">Server Error</string>
+    <string name="unknown_error">Unknown Error</string>
+
+    <string name="error_string">Something went wrong!!! Please reconnect your internet or try again later</string>
+
 </resources>
