@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
+import com.example.marleyspoonassignment.util.AppConstants
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -15,7 +16,7 @@ class RecipeListFragment : BaseFragment() {
     private lateinit var rootView: View
     private val viewModel: RecipeListViewModel by viewModel()
 
-    override fun onCreateView (
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -34,8 +35,12 @@ class RecipeListFragment : BaseFragment() {
         showApiLoadingIndicator()
     }
 
-    private fun getRecipeList(){
-
+    private fun getRecipeList() {
+        viewModel.fetchRecipeList(
+            AppConstants.SPACE_ID,
+            AppConstants.ENVIRONMENT,
+            AppConstants.ACCESS_TOKEN
+        )
     }
 
     private fun showApiLoadingIndicator() {
