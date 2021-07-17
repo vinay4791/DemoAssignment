@@ -1,5 +1,6 @@
 package com.example.marleyspoonassignment.api
 
+import com.example.marleyspoonassignment.util.AppConstants.BASE_URL
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,7 +21,7 @@ val networkModule = module {
 }
 
 fun getBaseUrl(): String {
-    return "https://cdn.contentful.com"
+    return BASE_URL
 }
 
 fun moshi(): Moshi {
@@ -32,7 +33,7 @@ fun provideRetrofitBuilder(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit.B
     retrofitBuilder.baseUrl(getBaseUrl())
     retrofitBuilder.client(okHttpClient)
     retrofitBuilder .addConverterFactory(MoshiConverterFactory.create(moshi))
-    retrofitBuilder  .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+    retrofitBuilder .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     return retrofitBuilder
 }
 
