@@ -4,16 +4,53 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_list.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecipeListFragment : BaseFragment() {
+
+    private lateinit var rootView: View
+    private val viewModel: RecipeListViewModel by viewModel()
 
     override fun onCreateView (
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        rootView = inflater.inflate(R.layout.fragment_list, container, false)
+        return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initialize()
+    }
+
+    private fun initialize() {
+        observeRecipeListData()
+        getRecipeList()
+        showApiLoadingIndicator()
+    }
+
+    private fun getRecipeList(){
+
+    }
+
+    private fun showApiLoadingIndicator() {
+        loadingView.showLoading(R.color.loader_bg_white_transparent)
+    }
+
+    private fun hideApiLoadingIndicator() {
+        loadingView.hideLoading()
+    }
+
+    private fun observeRecipeListData() {
+        viewModel.recipeListData()
+            .observe(viewLifecycleOwner, Observer { recipeListData ->
+
+            })
     }
 
 }

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dimen_0dp">0dp</dimen>
+    <dimen name="dimen_24dp">24dp</dimen>
+    <dimen name="dimens_8dp">8dp</dimen>
+    <dimen name="title_text_size">32sp</dimen>
+    <dimen name="dimen_48dp">48dp</dimen>
 </resources>

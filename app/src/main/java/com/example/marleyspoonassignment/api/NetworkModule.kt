@@ -20,7 +20,7 @@ val networkModule = module {
 }
 
 fun getBaseUrl(): String {
-    return ""
+    return "https://cdn.contentful.com"
 }
 
 fun moshi(): Moshi {
