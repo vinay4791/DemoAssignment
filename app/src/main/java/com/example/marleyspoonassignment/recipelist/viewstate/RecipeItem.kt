@@ -1,3 +1,19 @@
 package com.example.marleyspoonassignment.recipelist.viewstate
 
-data class RecipeItem(val id : String)
+import com.example.marleyspoonassignment.util.AppConstants.EMPTY_STRING
+
+data class RecipeItem(
+    var id: String,
+    var title: String,
+    var description: String,
+    var imageUrl: String
+)  {
+    companion object {
+        val EMPTY = RecipeItem (
+            id = EMPTY_STRING,
+            title = EMPTY_STRING,
+            description = EMPTY_STRING,
+            imageUrl = EMPTY_STRING,
+        )
+    }
+}

@@ -2,4 +2,5 @@ package com.example.marleyspoonassignment.recipelist.backend
 
 import com.example.marleyspoonassignment.responsecommon.Sys
 
-data class AssetItem(val sys: Sys)
+data class AssetItem(val sys: Sys,val fields: Fields)
+

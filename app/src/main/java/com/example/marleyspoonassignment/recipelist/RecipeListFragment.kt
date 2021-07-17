@@ -1,12 +1,14 @@
 package com.example.marleyspoonassignment.recipelist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
+import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
 import com.example.marleyspoonassignment.util.AppConstants
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -54,7 +56,16 @@ class RecipeListFragment : BaseFragment() {
     private fun observeRecipeListData() {
         viewModel.recipeListData()
             .observe(viewLifecycleOwner, Observer { recipeListData ->
-
+                when (recipeListData) {
+                    is RecipeListViewState.Loading -> showApiLoadingIndicator()
+                    is RecipeListViewState.Success -> {
+                       // showPopularMoviesListData(moviesListData.moviesInfoList)
+                        hideApiLoadingIndicator()
+                    }
+                    is RecipeListViewState.Error -> {
+                        hideApiLoadingIndicator()
+                    }
+                }
             })
     }
 

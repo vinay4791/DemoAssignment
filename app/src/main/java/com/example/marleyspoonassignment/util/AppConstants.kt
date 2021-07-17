@@ -8,4 +8,5 @@ object AppConstants {
     const val EMPTY_STRING = ""
     const val EMPTY_INT = 0
     const val EMPTY_DOUBLE = 0.0
+    const val RECIPE = "recipe"
 }

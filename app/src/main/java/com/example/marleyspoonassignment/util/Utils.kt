@@ -33,6 +33,9 @@ class Utils(private val appContext: Context) {
         }
     }
 
+    fun appendHttps(url: String): String{
+        return "https:$url"
+    }
 
 
 }
