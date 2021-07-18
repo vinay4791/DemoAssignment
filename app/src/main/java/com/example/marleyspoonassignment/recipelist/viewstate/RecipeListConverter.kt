@@ -1,6 +1,5 @@
 package com.example.marleyspoonassignment.recipelist.viewstate
 
-import android.util.Log
 import com.example.marleyspoonassignment.recipelist.backend.AssetItem
 import com.example.marleyspoonassignment.recipelist.backend.ListResponse
 import com.example.marleyspoonassignment.recipelist.backend.ResponseBaseItem
