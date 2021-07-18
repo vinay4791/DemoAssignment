@@ -1,4 +1,4 @@
-package com.example.marleyspoonassignment.recipelist
+package com.example.marleyspoonassignment.recipelist.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
+import com.example.marleyspoonassignment.recipelist.RecipeListViewModel
 import com.example.marleyspoonassignment.recipelist.adapter.RecipeListAdapter
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
@@ -44,10 +45,10 @@ class RecipeListFragment : BaseFragment() {
         showApiLoadingIndicator()
 
         list_swipe_layout.setOnRefreshListener {
-            if(!isApiLoading){
+            if (!isApiLoading) {
                 getRecipeList()
                 showApiLoadingIndicator()
-            } else{
+            } else {
                 list_swipe_layout.isRefreshing = false
             }
         }
@@ -69,7 +70,7 @@ class RecipeListFragment : BaseFragment() {
 
     private fun hideApiLoadingIndicator() {
         isApiLoading = false
-        if(list_swipe_layout.isRefreshing){
+        if (list_swipe_layout.isRefreshing) {
             list_swipe_layout.isRefreshing = false
         }
         loadingView.hideLoading()

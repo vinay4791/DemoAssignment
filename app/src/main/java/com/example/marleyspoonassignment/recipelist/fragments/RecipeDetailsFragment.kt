@@ -1,4 +1,4 @@
-package com.example.marleyspoonassignment.recipedetails
+package com.example.marleyspoonassignment.recipelist.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,11 @@ import com.example.marleyspoonassignment.base.BaseFragment
 
 class RecipeDetailsFragment : BaseFragment() {
 
-    override fun onCreateView (
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       return inflater.inflate(R.layout.fragment_details, container, false)
+        return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
 }

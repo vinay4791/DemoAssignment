@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.marleyspoonassignment.recipelist.RecipeListFragment"
+        android:name="com.example.marleyspoonassignment.recipelist.fragments.RecipeListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.marleyspoonassignment.recipedetails.RecipeDetailsFragment"
+        android:name="com.example.marleyspoonassignment.recipelist.fragments.RecipeDetailsFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_details" />
 </navigation>
