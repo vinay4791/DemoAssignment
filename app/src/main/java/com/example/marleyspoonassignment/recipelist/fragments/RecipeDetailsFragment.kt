@@ -10,10 +10,14 @@ import com.bumptech.glide.Glide
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
 import com.example.marleyspoonassignment.recipelist.RecipeListRepository
+import com.example.marleyspoonassignment.recipelist.adapter.TagsAdapter
 import com.example.marleyspoonassignment.recipelist.viewmodel.RecipeListViewModel
 import com.example.marleyspoonassignment.recipelist.viewmodel.RecipeViewModelFactory
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.util.AppConstants.EMPTY_STRING
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.android.ext.android.inject
 
@@ -61,6 +65,16 @@ class RecipeDetailsFragment : BaseFragment() {
         if(recipeItem.chefName != EMPTY_STRING) {
             chef_name_tv.text = "Chef : ${recipeItem.chefName}"
         }
+        setTags(recipeItem.tags)
+    }
+
+    private fun setTags(tags: List<String>) {
+        val layoutManager = FlexboxLayoutManager(requireActivity())
+        layoutManager.flexDirection = FlexDirection.ROW
+        layoutManager.justifyContent = JustifyContent.FLEX_START
+        tags_recycler_view.layoutManager = layoutManager
+        val adapter = TagsAdapter(tags)
+        tags_recycler_view.adapter = adapter
     }
 
 

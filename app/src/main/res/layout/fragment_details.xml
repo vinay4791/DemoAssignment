@@ -54,13 +54,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_24dp"
             android:layout_marginEnd="@dimen/dimen_24dp"
-            android:layout_marginBottom="@dimen/dimen_24dp"
+            android:layout_marginBottom="@dimen/dimens_16dp"
             android:textColor="@color/recipes_descrition_textcolor"
             android:textSize="@dimen/medium_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tags_recycler_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Description"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tags_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dimens_16dp"
+            android:layout_marginEnd="@dimen/dimens_16dp"
+            android:layout_marginBottom="@dimen/dimen_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="@dimen/dimens_8dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
