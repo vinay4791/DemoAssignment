@@ -6,17 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
+import com.example.marleyspoonassignment.recipelist.adapter.RecipeListAdapter
+import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
 import com.example.marleyspoonassignment.util.AppConstants
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class RecipeListFragment : BaseFragment() {
 
     private lateinit var rootView: View
     private val viewModel: RecipeListViewModel by viewModel()
+    private val adapter: RecipeListAdapter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +39,7 @@ class RecipeListFragment : BaseFragment() {
     private fun initialize() {
         observeRecipeListData()
         getRecipeList()
+        setUpCartRecyclerView()
         showApiLoadingIndicator()
     }
 
@@ -59,7 +65,7 @@ class RecipeListFragment : BaseFragment() {
                 when (recipeListData) {
                     is RecipeListViewState.Loading -> showApiLoadingIndicator()
                     is RecipeListViewState.Success -> {
-                       // showPopularMoviesListData(moviesListData.moviesInfoList)
+                        populateRecipes(recipeListData.moviesInfoList)
                         hideApiLoadingIndicator()
                     }
                     is RecipeListViewState.Error -> {
@@ -67,6 +73,23 @@ class RecipeListFragment : BaseFragment() {
                     }
                 }
             })
+    }
+
+    private fun setUpCartRecyclerView() {
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = adapter
+        adapter.setListener(listener)
+    }
+
+    private fun populateRecipes(moviesInfoList: List<RecipeItem>) {
+        adapter.setItems(moviesInfoList)
+    }
+
+    private val listener = object : RecipeListAdapter.Listener {
+        override fun recipeItemSelected(recipeItemId: String) {
+            Log.d("vinay", " recipeItemSElected $recipeItemId")
+        }
+
     }
 
 }

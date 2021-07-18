@@ -2,6 +2,7 @@ package com.example.marleyspoonassignment.recipelist.di
 
 import com.example.marleyspoonassignment.recipelist.RecipeListRepository
 import com.example.marleyspoonassignment.recipelist.RecipeListViewModel
+import com.example.marleyspoonassignment.recipelist.adapter.RecipeListAdapter
 import com.example.marleyspoonassignment.recipelist.backend.ListApiFetcher
 import com.example.marleyspoonassignment.recipelist.backend.ListBackend
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListConverter
@@ -12,6 +13,10 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import retrofit2.Retrofit
 
 val recipeListModule = module {
+
+    factory {
+        RecipeListAdapter()
+    }
 
     factory {
         listBackend(get())
