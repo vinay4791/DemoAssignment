@@ -8,12 +8,17 @@ data class ResponseBaseItem(
 )
 
 data class Fields(
+    val name : String,
     val title: String,
     val description: String,
     val photo: Photo,
-    val file: File
+    val file: File,
+    val chef: Chef,
+    val tags: List<Sys>
 )
 
 data class Photo(val sys: Sys)
 
 data class File(val url: String)
+
+data class Chef(val sys: Sys)

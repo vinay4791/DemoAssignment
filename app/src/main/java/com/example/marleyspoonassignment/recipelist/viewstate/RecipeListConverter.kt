@@ -15,7 +15,12 @@ class RecipeListConverter(private val utils: Utils) :
         val listResponseItems = listResponse.items
         for (listResponseItem in listResponseItems) {
             if (listResponseItem.sys.contentType.sys.id == RECIPE) {
-                recipeItemList.add(getRecipeItem(listResponseItem, listResponse.includes.Asset))
+                var chefName = EMPTY_STRING
+                if (listResponseItem.fields.chef != null) {
+                    chefName = getChefName(listResponseItem.fields.chef.sys.id, listResponseItems)
+                }
+
+                recipeItemList.add(getRecipeItem(listResponseItem, listResponse.includes.Asset, chefName))
             }
         }
         return RecipeListViewState.Success(recipeItemList)
@@ -24,6 +29,7 @@ class RecipeListConverter(private val utils: Utils) :
     private fun getRecipeItem(
         listResponseItem: ResponseBaseItem,
         assets: List<AssetItem>,
+        chefName: String,
     ): RecipeItem {
         var imageUrl = EMPTY_STRING
         for (asset in assets) {
@@ -35,8 +41,18 @@ class RecipeListConverter(private val utils: Utils) :
             id = listResponseItem.sys.id,
             description = listResponseItem.fields.description,
             title = listResponseItem.fields.title,
-            imageUrl = imageUrl
+            imageUrl = imageUrl,
+            chefName = chefName
         )
+    }
+
+    private fun getChefName(id: String, listResponseItems: List<ResponseBaseItem>): String {
+        for (listResponseItem in listResponseItems) {
+            if (listResponseItem.sys.id == id) {
+                return listResponseItem.fields.name
+            }
+        }
+        return EMPTY_STRING
     }
 
 }

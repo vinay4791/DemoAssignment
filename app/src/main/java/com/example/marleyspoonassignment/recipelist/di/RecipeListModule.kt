@@ -35,10 +35,6 @@ val recipeListModule = module {
         )
     }
 
-    /*viewModel {
-        RecipeListViewModel(get())
-    }
-*/
 }
 
 fun listBackend(retrofit: Retrofit.Builder): ListBackend {
