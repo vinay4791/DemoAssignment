@@ -13,6 +13,7 @@ import com.example.marleyspoonassignment.recipelist.RecipeListRepository
 import com.example.marleyspoonassignment.recipelist.viewmodel.RecipeListViewModel
 import com.example.marleyspoonassignment.recipelist.viewmodel.RecipeViewModelFactory
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
+import com.example.marleyspoonassignment.util.AppConstants.EMPTY_STRING
 import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.android.ext.android.inject
 
@@ -57,6 +58,9 @@ class RecipeDetailsFragment : BaseFragment() {
 
         description_tv.text = recipeItem.description
         title_tv.text = recipeItem.title
+        if(recipeItem.chefName != EMPTY_STRING) {
+            chef_name_tv.text = "Chef : ${recipeItem.chefName}"
+        }
     }
 
 

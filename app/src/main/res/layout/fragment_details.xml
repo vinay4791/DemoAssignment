@@ -3,12 +3,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/recipe_details_iv"
+        android:layout_margin="@dimen/dimen_24dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
     <View
         android:layout_width="match_parent"
@@ -21,34 +23,46 @@
         android:layout_gravity="bottom">
 
         <TextView
-            android:id="@+id/description_tv"
-            android:layout_width="0dp"
+            android:id="@+id/title_tv"
+            android:gravity="center_horizontal"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_24dp"
-            android:layout_marginLeft="@dimen/dimen_24dp"
             android:layout_marginEnd="@dimen/dimen_24dp"
-            android:layout_marginRight="@dimen/dimen_24dp"
+            android:layout_marginBottom="@dimen/dimens_16dp"
+            android:textColor="@color/recipes_title_white"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/chef_name_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="title"/>
+
+        <TextView
+            android:id="@+id/chef_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/recipes_title_white"
+            android:layout_marginBottom="@dimen/dimen_48dp"
+            app:layout_constraintBottom_toTopOf="@+id/description_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/description_tv"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_24dp"
+            android:layout_marginEnd="@dimen/dimen_24dp"
             android:layout_marginBottom="@dimen/dimen_24dp"
             android:textColor="@color/recipes_descrition_textcolor"
             android:textSize="@dimen/medium_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Description"/>
 
-        <TextView
-            android:id="@+id/title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_24dp"
-            android:layout_marginLeft="@dimen/dimen_24dp"
-            android:layout_marginEnd="@dimen/dimen_24dp"
-            android:layout_marginRight="@dimen/dimen_24dp"
-            android:layout_marginBottom="@dimen/dimen_64dp"
-            android:textColor="@color/recipes_title_white"
-            android:textSize="@dimen/extra_large_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/description_tv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
