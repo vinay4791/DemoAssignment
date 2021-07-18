@@ -1,17 +1,19 @@
 package com.example.marleyspoonassignment.recipelist.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
 import com.example.marleyspoonassignment.recipelist.RecipeListRepository
 import com.example.marleyspoonassignment.recipelist.RecipeListViewModel
 import com.example.marleyspoonassignment.recipelist.RecipeViewModelFactory
+import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
+import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.android.ext.android.inject
 
 class RecipeDetailsFragment : BaseFragment() {
@@ -44,8 +46,17 @@ class RecipeDetailsFragment : BaseFragment() {
     private fun observeRecipeListData() {
         viewModel.getSelectedRecipeItem()
             .observe(viewLifecycleOwner, Observer { recipeItem ->
-                    Log.d("vinay", recipeItem.description)
+                populateRecipeDetails(recipeItem)
             })
+    }
+
+    private fun populateRecipeDetails(recipeItem: RecipeItem) {
+        Glide.with(requireActivity())
+            .load(recipeItem.imageUrl)
+            .into(recipe_details_iv)
+
+        description_tv.text = recipeItem.description
+        title_tv.text = recipeItem.title
     }
 
 

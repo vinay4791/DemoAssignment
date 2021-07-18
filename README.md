@@ -45,3 +45,5 @@ Activies, Fragments and Viewmodels inherit from BaseActivity, BaseFragment and B
 future scaling of the application
 
 Swipe Refresh : Swipe Refresh is added to list for recalling api in case of failed api calls in an error case.
+
+SharedViewModel : Shared ViewModel concept is used to communicate between the fragments. 

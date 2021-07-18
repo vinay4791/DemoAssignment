@@ -16,5 +16,7 @@
 
     <color name="recipes_text_color">#f2f2f2</color>
     <color name="recipes_list_background_grey">#464646</color>
+    <color name="recipes_descrition_textcolor">#bababa</color>
+    <color name="recipes_title_white">#ffffff</color>
 
 </resources>
