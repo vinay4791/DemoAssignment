@@ -14,8 +14,8 @@ import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
 import com.example.marleyspoonassignment.util.AppConstants
 import kotlinx.android.synthetic.main.fragment_list.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecipeListFragment : BaseFragment() {
 

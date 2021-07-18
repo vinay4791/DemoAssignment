@@ -8,8 +8,8 @@ import com.example.marleyspoonassignment.recipelist.backend.ListBackend
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListConverter
 import com.example.marleyspoonassignment.rx.AndroidSchedulingStrategyFactory
 import com.example.marleyspoonassignment.util.AppConstants
-import org.koin.dsl.module
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val recipeListModule = module {

@@ -9,9 +9,9 @@ import com.squareup.moshi.JsonEncodingException
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.ObservableTransformer
+import io.reactivex.functions.Function
 import retrofit2.HttpException
 import java.net.UnknownHostException
-import io.reactivex.functions.Function
 
 class RecipeListRepository constructor(
     private val listApiFetcher: ListApiFetcher,
