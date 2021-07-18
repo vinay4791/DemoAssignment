@@ -39,7 +39,7 @@
             android:layout_marginRight="@dimen/dimens_16dp"
             android:layout_marginBottom="@dimen/dimen_24dp"
             android:text="sds sdvsdv svsdv sdvsdv sdvsv "
-            android:textColor="@color/headlines_text_color"
+            android:textColor="@color/recipes_text_color"
             android:textSize="@dimen/large_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

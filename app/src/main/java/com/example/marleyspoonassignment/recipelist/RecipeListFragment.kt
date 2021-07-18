@@ -65,7 +65,7 @@ class RecipeListFragment : BaseFragment() {
                 when (recipeListData) {
                     is RecipeListViewState.Loading -> showApiLoadingIndicator()
                     is RecipeListViewState.Success -> {
-                        populateRecipes(recipeListData.moviesInfoList)
+                        populateRecipes(recipeListData.recipeInfoList)
                         hideApiLoadingIndicator()
                     }
                     is RecipeListViewState.Error -> {
@@ -81,8 +81,8 @@ class RecipeListFragment : BaseFragment() {
         adapter.setListener(listener)
     }
 
-    private fun populateRecipes(moviesInfoList: List<RecipeItem>) {
-        adapter.setItems(moviesInfoList)
+    private fun populateRecipes(recipesInfoList: List<RecipeItem>) {
+        adapter.setItems(recipesInfoList)
     }
 
     private val listener = object : RecipeListAdapter.Listener {

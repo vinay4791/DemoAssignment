@@ -14,7 +14,7 @@
 
     <color name="loader_bg_white_transparent">#B3FFFFFF</color>
 
-    <color name="headlines_text_color">#f2f2f2</color>
-    <color name="headlines_list_background_grey">#464646</color>
+    <color name="recipes_text_color">#f2f2f2</color>
+    <color name="recipess_list_background_grey">#464646</color>
 
 </resources>
