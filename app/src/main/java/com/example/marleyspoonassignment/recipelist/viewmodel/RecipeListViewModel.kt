@@ -1,9 +1,10 @@
-package com.example.marleyspoonassignment.recipelist
+package com.example.marleyspoonassignment.recipelist.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.marleyspoonassignment.api.ErrorType
 import com.example.marleyspoonassignment.base.BaseViewModel
+import com.example.marleyspoonassignment.recipelist.RecipeListRepository
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
 import io.reactivex.disposables.CompositeDisposable

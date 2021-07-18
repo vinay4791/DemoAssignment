@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
 import com.example.marleyspoonassignment.recipelist.RecipeListRepository
-import com.example.marleyspoonassignment.recipelist.RecipeListViewModel
-import com.example.marleyspoonassignment.recipelist.RecipeViewModelFactory
+import com.example.marleyspoonassignment.recipelist.viewmodel.RecipeListViewModel
+import com.example.marleyspoonassignment.recipelist.viewmodel.RecipeViewModelFactory
 import com.example.marleyspoonassignment.recipelist.adapter.RecipeListAdapter
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
