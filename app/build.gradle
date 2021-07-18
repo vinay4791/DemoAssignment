@@ -34,8 +34,9 @@ android {
     }
 }
 
-def retrofitVersion = '2.7.1'
-def rxJavaVersion = '2.1.1'
+def retrofitVersion = '2.9.0'
+def rxAndroidVersion = '2.1.1'
+def rxJavaVersion = '2.2.19'
 def glideVersion = '4.12.0'
 def koin_version = "2.2.2"
 def lottie_version = "3.4.2"
@@ -43,14 +44,14 @@ def logging_interceptor_version = "4.9.0"
 def moshi_converter_version = "2.6.0"
 def navVersion = '2.3.5'
 def swipe_refresh_version = '1.1.0'
-
+def flex_box_version = '1.1.0'
 
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
     //Retrofit
@@ -69,7 +70,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
     //RxJava
-    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 
     // Koin
@@ -89,8 +90,9 @@ dependencies {
     //Swipe Refresh Layout
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version"
 
-    implementation 'com.google.android:flexbox:1.1.0'
-    
+    //FlexBox Version
+    implementation "com.google.android:flexbox:$flex_box_version"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
