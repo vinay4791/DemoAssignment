@@ -35,7 +35,7 @@ class RecipeListAdapter : RecyclerView.Adapter<RecipeListViewHolder>() {
     interface Listener : RecipeListViewHolder.Listener{
         companion object {
             val NO_OP: Listener = object : Listener {
-                override fun recipeItemSelected(recipeItemId: String) {
+                override fun recipeItemSelected(recipeItem: RecipeItem) {
                     //NO_OP
                 }
             }

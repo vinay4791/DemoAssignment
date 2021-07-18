@@ -37,10 +37,10 @@ val recipeListModule = module {
         )
     }
 
-    viewModel {
+    /*viewModel {
         RecipeListViewModel(get())
     }
-
+*/
 }
 
 fun listBackend(retrofit: Retrofit.Builder): ListBackend {

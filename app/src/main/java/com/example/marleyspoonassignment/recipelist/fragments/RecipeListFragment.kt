@@ -1,27 +1,32 @@
 package com.example.marleyspoonassignment.recipelist.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marleyspoonassignment.R
 import com.example.marleyspoonassignment.base.BaseFragment
+import com.example.marleyspoonassignment.recipelist.RecipeListRepository
 import com.example.marleyspoonassignment.recipelist.RecipeListViewModel
+import com.example.marleyspoonassignment.recipelist.RecipeViewModelFactory
 import com.example.marleyspoonassignment.recipelist.adapter.RecipeListAdapter
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
 import com.example.marleyspoonassignment.util.AppConstants
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecipeListFragment : BaseFragment() {
 
     private lateinit var rootView: View
-    private val viewModel: RecipeListViewModel by viewModel()
+    private val repository: RecipeListRepository by inject()
+    private val viewModel: RecipeListViewModel by activityViewModels() {
+        RecipeViewModelFactory(repository)
+    }
     private val adapter: RecipeListAdapter by inject()
     private var isApiLoading = false
 
@@ -103,8 +108,10 @@ class RecipeListFragment : BaseFragment() {
     }
 
     private val listener = object : RecipeListAdapter.Listener {
-        override fun recipeItemSelected(recipeItemId: String) {
-            Log.d("vinay", " recipeItemSElected $recipeItemId")
+        override fun recipeItemSelected(recipeItem: RecipeItem) {
+            viewModel.setSelectedRecipeItem(recipeItem)
+            Navigation.findNavController(rootView)
+                .navigate(R.id.action_listFragment_to_detailFragment)
         }
 
     }

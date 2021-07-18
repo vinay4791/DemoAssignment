@@ -18,13 +18,13 @@ class RecipeListViewHolder(private val itemView: View,
             .into(itemView.recipe_iv)
 
         itemView.setOnClickListener {
-            listener.recipeItemSelected(recipeItem.id)
+            listener.recipeItemSelected(recipeItem)
         }
 
     }
 
     interface Listener {
-        fun recipeItemSelected(recipeItemId: String)
+        fun recipeItemSelected(recipeItemId: RecipeItem)
     }
 
 }
