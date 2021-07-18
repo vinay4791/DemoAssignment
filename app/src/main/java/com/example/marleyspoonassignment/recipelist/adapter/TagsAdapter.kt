@@ -29,7 +29,7 @@ class TagsAdapter(private val mItems: List<String>) :
 
     inner class DivItemViewHolder constructor(itemView: View) : RecyclerView.ViewHolder
         (itemView) {
-        private val text: TextView = itemView.findViewById(R.id.genre_tv)
+        private val text: TextView = itemView.findViewById(R.id.tags_tv)
 
         fun onBind(position: Int) {
             text.text = mItems[position]
