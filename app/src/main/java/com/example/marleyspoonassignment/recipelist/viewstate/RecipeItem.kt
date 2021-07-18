@@ -7,7 +7,8 @@ data class RecipeItem(
     var title: String,
     var description: String,
     var imageUrl: String,
-    var chefName: String
+    var chefName: String,
+    var tags: List<String>
 )  {
     companion object {
         val EMPTY = RecipeItem (
@@ -15,7 +16,8 @@ data class RecipeItem(
             title = EMPTY_STRING,
             description = EMPTY_STRING,
             imageUrl = EMPTY_STRING,
-            chefName = EMPTY_STRING
+            chefName = EMPTY_STRING,
+            tags = emptyList()
         )
     }
 }

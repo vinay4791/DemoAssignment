@@ -14,7 +14,7 @@ data class Fields(
     val photo: Photo,
     val file: File,
     val chef: Chef,
-    val tags: List<Sys>
+    val tags: List<TagItem>
 )
 
 data class Photo(val sys: Sys)
@@ -22,3 +22,5 @@ data class Photo(val sys: Sys)
 data class File(val url: String)
 
 data class Chef(val sys: Sys)
+
+data class TagItem(val sys: Sys)

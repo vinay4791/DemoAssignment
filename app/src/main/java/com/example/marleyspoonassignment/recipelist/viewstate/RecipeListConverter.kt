@@ -1,8 +1,10 @@
 package com.example.marleyspoonassignment.recipelist.viewstate
 
+import android.util.Log
 import com.example.marleyspoonassignment.recipelist.backend.AssetItem
 import com.example.marleyspoonassignment.recipelist.backend.ListResponse
 import com.example.marleyspoonassignment.recipelist.backend.ResponseBaseItem
+import com.example.marleyspoonassignment.recipelist.backend.TagItem
 import com.example.marleyspoonassignment.rx.Converter
 import com.example.marleyspoonassignment.util.AppConstants.EMPTY_STRING
 import com.example.marleyspoonassignment.util.AppConstants.RECIPE
@@ -16,11 +18,14 @@ class RecipeListConverter(private val utils: Utils) :
         for (listResponseItem in listResponseItems) {
             if (listResponseItem.sys.contentType.sys.id == RECIPE) {
                 var chefName = EMPTY_STRING
+                var tags = emptyList<String>()
                 if (listResponseItem.fields.chef != null) {
                     chefName = getChefName(listResponseItem.fields.chef.sys.id, listResponseItems)
                 }
-
-                recipeItemList.add(getRecipeItem(listResponseItem, listResponse.includes.Asset, chefName))
+                if(!listResponseItem.fields.tags.isNullOrEmpty()){
+                    tags = getTags(listResponseItem.fields.tags, listResponseItems)
+                }
+                recipeItemList.add(getRecipeItem(listResponseItem, listResponse.includes.Asset, chefName, tags))
             }
         }
         return RecipeListViewState.Success(recipeItemList)
@@ -30,6 +35,7 @@ class RecipeListConverter(private val utils: Utils) :
         listResponseItem: ResponseBaseItem,
         assets: List<AssetItem>,
         chefName: String,
+        tags: List<String>,
     ): RecipeItem {
         var imageUrl = EMPTY_STRING
         for (asset in assets) {
@@ -42,7 +48,8 @@ class RecipeListConverter(private val utils: Utils) :
             description = listResponseItem.fields.description,
             title = listResponseItem.fields.title,
             imageUrl = imageUrl,
-            chefName = chefName
+            chefName = chefName,
+            tags = tags
         )
     }
 
@@ -53,6 +60,18 @@ class RecipeListConverter(private val utils: Utils) :
             }
         }
         return EMPTY_STRING
+    }
+
+    private fun getTags(tags: List<TagItem>, listResponseItems: List<ResponseBaseItem>): List<String>{
+        val recipeItemList = mutableListOf<String>()
+        tags.map {
+            for(listResponseItem in listResponseItems) {
+                if(it.sys.id == listResponseItem.sys.id) {
+                    recipeItemList.add(listResponseItem.fields.name)
+                }
+            }
+        }
+        return recipeItemList
     }
 
 }
