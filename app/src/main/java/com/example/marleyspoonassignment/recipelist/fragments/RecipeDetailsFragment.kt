@@ -65,13 +65,17 @@ class RecipeDetailsFragment : BaseFragment() {
         if(recipeItem.chefName != EMPTY_STRING) {
             chef_name_tv.text = "Chef : ${recipeItem.chefName}"
         }
-        setTags(recipeItem.tags)
+
+        if(!recipeItem.tags.isNullOrEmpty()) {
+            setTags(recipeItem.tags)
+        }
     }
 
     private fun setTags(tags: List<String>) {
         val layoutManager = FlexboxLayoutManager(requireActivity())
         layoutManager.flexDirection = FlexDirection.ROW
         layoutManager.justifyContent = JustifyContent.FLEX_START
+        tags_recycler_view.visibility = View.VISIBLE
         tags_recycler_view.layoutManager = layoutManager
         val adapter = TagsAdapter(tags)
         tags_recycler_view.adapter = adapter

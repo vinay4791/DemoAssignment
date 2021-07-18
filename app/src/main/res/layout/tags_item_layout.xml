@@ -6,7 +6,7 @@
     android:layout_marginStart="@dimen/dimens_16dp"
     android:layout_marginLeft="@dimen/dimens_16dp"
     android:layout_marginTop="@dimen/dimens_8dp"
-    android:background="@drawable/bg_genre"
+    android:background="@drawable/bg_tag"
     android:gravity="center"
     android:orientation="horizontal">
 
