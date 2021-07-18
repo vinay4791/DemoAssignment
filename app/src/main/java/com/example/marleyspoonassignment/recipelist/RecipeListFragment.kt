@@ -22,6 +22,7 @@ class RecipeListFragment : BaseFragment() {
     private lateinit var rootView: View
     private val viewModel: RecipeListViewModel by viewModel()
     private val adapter: RecipeListAdapter by inject()
+    private var isApiLoading = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +39,19 @@ class RecipeListFragment : BaseFragment() {
 
     private fun initialize() {
         observeRecipeListData()
-        getRecipeList()
         setUpCartRecyclerView()
+        getRecipeList()
         showApiLoadingIndicator()
+
+        list_swipe_layout.setOnRefreshListener {
+            if(!isApiLoading){
+                getRecipeList()
+                showApiLoadingIndicator()
+            } else{
+                list_swipe_layout.isRefreshing = false
+            }
+        }
+
     }
 
     private fun getRecipeList() {
@@ -52,10 +63,15 @@ class RecipeListFragment : BaseFragment() {
     }
 
     private fun showApiLoadingIndicator() {
+        isApiLoading = true
         loadingView.showLoading(R.color.loader_bg_white_transparent)
     }
 
     private fun hideApiLoadingIndicator() {
+        isApiLoading = false
+        if(list_swipe_layout.isRefreshing){
+            list_swipe_layout.isRefreshing = false
+        }
         loadingView.hideLoading()
     }
 

@@ -43,6 +43,8 @@ def lottie_version = "3.4.2"
 def logging_interceptor_version = "4.9.0"
 def moshi_converter_version = "2.6.0"
 def navVersion = '2.3.5'
+def swipe_refresh_version = '1.1.0'
+
 
 dependencies {
 
@@ -81,6 +83,9 @@ dependencies {
 
     //Progress Bar
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //Swipe Refresh Layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

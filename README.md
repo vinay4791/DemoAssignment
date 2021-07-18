@@ -44,3 +44,4 @@ Base Module :
 Activies, Fragments and Viewmodels inherit from BaseActivity, BaseFragment and BaseViewmodel which is written purposely for 
 future scaling of the application
 
+Swipe Refresh : Swipe Refresh is added to list for recalling api in case of failed api calls in an error case.
