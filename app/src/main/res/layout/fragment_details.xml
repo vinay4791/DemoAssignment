@@ -55,7 +55,7 @@
             android:layout_marginStart="@dimen/dimen_24dp"
             android:layout_marginEnd="@dimen/dimen_24dp"
             android:layout_marginBottom="@dimen/dimens_16dp"
-            android:textColor="@color/recipes_descrition_textcolor"
+            android:textColor="@color/recipes_description_text_color"
             android:textSize="@dimen/medium_text_size"
             app:layout_constraintBottom_toTopOf="@id/tags_recycler_view"
             app:layout_constraintEnd_toEndOf="parent"
