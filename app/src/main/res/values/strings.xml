@@ -6,6 +6,6 @@
     <string name="unknown_error">Unknown Error</string>
 
     <string name="error_string">Something went wrong!!! Please reconnect your internet or try again later</string>
-    <string name="text_api_loading_error">Please check your internet connection or refresh the screen !!!</string>
+    <string name="text_api_loading_error">Error in loading data!!! \n Please check your internet connection or refresh the screen. \n Thankyou.</string>
 
 </resources>
