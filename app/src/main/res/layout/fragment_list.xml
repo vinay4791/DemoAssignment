@@ -31,7 +31,23 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/recipe_list_title" />
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="@dimen/dimen_0dp"
+            android:layout_marginTop="@dimen/dimen_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:textColor="@color/recipes_title_white"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_api_loading_error"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/recipe_list_title"/>
 
         <com.example.marleyspoonassignment.util.FullScreenLoadingView
             android:id="@+id/loadingView"

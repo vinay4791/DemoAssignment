@@ -17,6 +17,7 @@ import com.example.marleyspoonassignment.recipelist.adapter.RecipeListAdapter
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeItem
 import com.example.marleyspoonassignment.recipelist.viewstate.RecipeListViewState
 import com.example.marleyspoonassignment.util.AppConstants
+import com.example.marleyspoonassignment.util.Utils
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.koin.android.ext.android.inject
 
@@ -28,6 +29,7 @@ class RecipeListFragment : BaseFragment() {
         RecipeViewModelFactory(repository)
     }
     private val adapter: RecipeListAdapter by inject()
+    private val utils: Utils by inject()
     private var isApiLoading = false
 
     override fun onCreateView(
@@ -47,25 +49,27 @@ class RecipeListFragment : BaseFragment() {
         observeRecipeListData()
         setUpCartRecyclerView()
         getRecipeList()
-        showApiLoadingIndicator()
 
         list_swipe_layout.setOnRefreshListener {
             if (!isApiLoading) {
                 getRecipeList()
-                showApiLoadingIndicator()
             } else {
                 list_swipe_layout.isRefreshing = false
             }
         }
-
     }
 
     private fun getRecipeList() {
-        viewModel.fetchRecipeList(
-            AppConstants.SPACE_ID,
-            AppConstants.ENVIRONMENT,
-            AppConstants.ACCESS_TOKEN
-        )
+        if (utils.hasInternet()) {
+            showApiLoadingIndicator()
+            viewModel.fetchRecipeList(
+                AppConstants.SPACE_ID,
+                AppConstants.ENVIRONMENT,
+                AppConstants.ACCESS_TOKEN
+            )
+        } else {
+            handleApiELoadingError()
+        }
     }
 
     private fun showApiLoadingIndicator() {
@@ -91,6 +95,7 @@ class RecipeListFragment : BaseFragment() {
                         hideApiLoadingIndicator()
                     }
                     is RecipeListViewState.Error -> {
+                        handleApiELoadingError()
                         hideApiLoadingIndicator()
                     }
                 }
@@ -104,6 +109,8 @@ class RecipeListFragment : BaseFragment() {
     }
 
     private fun populateRecipes(recipesInfoList: List<RecipeItem>) {
+        recyclerView.visibility = View.VISIBLE
+        error_text.visibility = View.GONE
         adapter.setItems(recipesInfoList)
     }
 
@@ -113,7 +120,12 @@ class RecipeListFragment : BaseFragment() {
             Navigation.findNavController(rootView)
                 .navigate(R.id.action_listFragment_to_detailFragment)
         }
+    }
 
+    private fun handleApiELoadingError(){
+        recyclerView.visibility = View.GONE
+        error_text.visibility = View.VISIBLE
+        list_swipe_layout.isRefreshing = false
     }
 
 }
